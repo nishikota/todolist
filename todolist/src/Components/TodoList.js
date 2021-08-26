@@ -21,14 +21,11 @@ const TodoList = () => {
   return (
     <div className="appArea" style={styles.appArea}>
       <div className="inputArea" style={styles.inputArea}>
-        <input
-          placeholder="テキストを入力..."
-          type="text"
-          onChange={wordInputEvent}
+        <Resister
+          wordInputEvent={wordInputEvent}
+          valueRegister={valueRegister}
+          FaPlus={FaPlus}
         />
-        <button onClick={valueRegister}>
-          <FaPlus />
-        </button>
       </div>
       <div className="ValuesArea" style={styles.valuesArea}>
         {valueStorage.map((value, i) => (
@@ -74,6 +71,7 @@ const styles = {
     borderRadius: 20,
     listStyle: "none",
     display: "flex",
+    marginBottom: 5,
   },
   textArea: {
     marginRight: 10,
