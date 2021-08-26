@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {FaRegTrashAlt, FaPlus} from "react-icons/fa";
 import Resister from "./Register";
+import Value from "./Value";
 
 const TodoList = () => {
   const [inputValue, setInputValue] = useState("");
@@ -29,12 +30,12 @@ const TodoList = () => {
       </div>
       <div className="ValuesArea" style={styles.valuesArea}>
         {valueStorage.map((value, i) => (
-          <div className="Value" key={i} style={styles.value}>
-            <p style={styles.textArea}>{value}</p>
-            <button onClick={() => valueDelete(i)} style={styles.button}>
-              <FaRegTrashAlt />
-            </button>
-          </div>
+          <Value
+            value={value}
+            i={i}
+            valueDelete={valueDelete}
+            FaRegTrashAlt={FaRegTrashAlt}
+          />
         ))}
       </div>
     </div>
@@ -64,21 +65,5 @@ const styles = {
   },
   valuesArea: {
     margin: "3rem",
-  },
-  value: {
-    border: "solid",
-    borderWidth: 1,
-    borderRadius: 20,
-    listStyle: "none",
-    display: "flex",
-    marginBottom: 5,
-  },
-  textArea: {
-    marginRight: 10,
-    marginLeft: 10,
-  },
-  button: {
-    backgroundColor: "white",
-    border: "none",
   },
 };
