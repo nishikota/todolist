@@ -1,16 +1,22 @@
 import React, {useState} from "react";
 import {FaRegTrashAlt, FaPlus} from "react-icons/fa";
-
-const valueStorage = [];
+import Resister from "./Register";
 
 const TodoList = () => {
   const [inputValue, setInputValue] = useState("");
+  const [valueStorage, setValueStorage] = useState([]);
   const wordInputEvent = (e) => {
     setInputValue(e.target.value);
   };
   const valueRegister = () => {
-    valueStorage.push(inputValue);
-    console.log(valueStorage);
+    const newStorage = [...valueStorage];
+    newStorage.push(inputValue);
+    setValueStorage(newStorage);
+  };
+  const valueDelete = (i) => {
+    const newStorage = [...valueStorage];
+    newStorage.splice(i, 1);
+    setValueStorage(newStorage);
   };
   return (
     <div className="appArea" style={styles.appArea}>
@@ -25,10 +31,10 @@ const TodoList = () => {
         </button>
       </div>
       <div className="ValuesArea" style={styles.valuesArea}>
-        {valueStorage.map((value) => (
-          <div className="Value" style={styles.value}>
+        {valueStorage.map((value, i) => (
+          <div className="Value" key={i} style={styles.value}>
             <p style={styles.textArea}>{value}</p>
-            <button onClick="" style={styles.button}>
+            <button onClick={() => valueDelete(i)} style={styles.button}>
               <FaRegTrashAlt />
             </button>
           </div>
