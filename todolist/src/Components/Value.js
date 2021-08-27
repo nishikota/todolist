@@ -29,6 +29,8 @@ const styles = {
   },
   button: {
     backgroundColor: "white",
+    color: "gray",
     border: "none",
+    cursor: "pointer",
   },
 };
