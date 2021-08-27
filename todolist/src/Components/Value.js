@@ -1,10 +1,14 @@
-const Value = ({value, i, valueDelete, FaRegTrashAlt}) => {
+const Value = ({value, i, valueDelete, FaRegTrashAlt, Button}) => {
   return (
     <div className="Value" key={i} style={styles.value}>
       <p style={styles.textArea}>{value}</p>
-      <button onClick={() => valueDelete(i)} style={styles.button}>
-        <FaRegTrashAlt />
-      </button>
+      <Button
+        i={i}
+        FaRegTrashAlt={FaRegTrashAlt}
+        clickEvent={valueDelete}
+        button={styles.button}
+        which={"value"}
+      />
     </div>
   );
 };

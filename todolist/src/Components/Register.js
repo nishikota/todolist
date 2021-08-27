@@ -1,4 +1,4 @@
-const Resister = ({wordInputEvent, valueRegister, FaPlus}) => {
+const Resister = ({wordInputEvent, valueRegister, FaPlus, Button}) => {
   return (
     <>
       <input
@@ -6,11 +6,21 @@ const Resister = ({wordInputEvent, valueRegister, FaPlus}) => {
         type="text"
         onChange={wordInputEvent}
       />
-      <button onClick={valueRegister}>
-        <FaPlus />
-      </button>
+      <Button
+        FaPlus={FaPlus}
+        clickEvent={valueRegister}
+        button={styles.button}
+        which={"resister"}
+      />
     </>
   );
 };
 
 export default Resister;
+
+const styles = {
+  button: {
+    backgroundColor: "gray",
+    color: "white",
+  },
+};

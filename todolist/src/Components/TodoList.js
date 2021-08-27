@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {FaRegTrashAlt, FaPlus} from "react-icons/fa";
 import Resister from "./Register";
 import Value from "./Value";
+import Button from "./Button";
 
 const TodoList = () => {
   const [inputValue, setInputValue] = useState("");
@@ -19,6 +20,7 @@ const TodoList = () => {
     newStorage.splice(i, 1);
     setValueStorage(newStorage);
   };
+
   return (
     <div className="appArea" style={styles.appArea}>
       <div className="inputArea" style={styles.inputArea}>
@@ -26,15 +28,17 @@ const TodoList = () => {
           wordInputEvent={wordInputEvent}
           valueRegister={valueRegister}
           FaPlus={FaPlus}
+          Button={Button}
         />
       </div>
       <div className="ValuesArea" style={styles.valuesArea}>
         {valueStorage.map((value, i) => (
           <Value
             value={value}
-            i={i}
+            key={i}
             valueDelete={valueDelete}
             FaRegTrashAlt={FaRegTrashAlt}
+            Button={Button}
           />
         ))}
       </div>
