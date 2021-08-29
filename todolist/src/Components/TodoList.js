@@ -1,36 +1,48 @@
 import React, {useState} from "react";
 import {FaRegTrashAlt, FaPlus} from "react-icons/fa";
-
-const valueStorage = [];
+import Resister from "./Register";
+import Value from "./Value";
+import Button from "./Button";
 
 const TodoList = () => {
   const [inputValue, setInputValue] = useState("");
+  const [valueStorage, setValueStorage] = useState([]);
   const wordInputEvent = (e) => {
     setInputValue(e.target.value);
   };
   const valueRegister = () => {
-    valueStorage.push(inputValue);
-    console.log(valueStorage);
+    const newStorage = [...valueStorage];
+    newStorage.push(inputValue);
+    setValueStorage(newStorage);
+    setInputValue("");
   };
+  const valueDelete = (i) => {
+    const newStorage = [...valueStorage];
+    newStorage.splice(i, 1);
+    setValueStorage(newStorage);
+  };
+
   return (
     <div className="appArea" style={styles.appArea}>
       <div className="inputArea" style={styles.inputArea}>
-        <input
-          placeholder="テキストを入力..."
-          type="text"
-          onChange={wordInputEvent}
+        <Resister
+          wordInputEvent={wordInputEvent}
+          valueRegister={valueRegister}
+          FaPlus={FaPlus}
+          Button={Button}
+          inputValue={inputValue}
         />
-        <button onClick={valueRegister}>
-          <FaPlus />
-        </button>
       </div>
       <div className="ValuesArea" style={styles.valuesArea}>
-        {valueStorage.map((value) => (
-          <div className="Value" style={styles.value}>
-            <p style={styles.textArea}>{value}</p>
-            <button onClick="" style={styles.button}>
-              <FaRegTrashAlt />
-            </button>
+        {valueStorage.map((value, i) => (
+          <div key={i}>
+            <Value
+              value={value}
+              valueKey={i}
+              valueDelete={valueDelete}
+              FaRegTrashAlt={FaRegTrashAlt}
+              Button={Button}
+            />
           </div>
         ))}
       </div>
@@ -61,20 +73,5 @@ const styles = {
   },
   valuesArea: {
     margin: "3rem",
-  },
-  value: {
-    border: "solid",
-    borderWidth: 1,
-    borderRadius: 20,
-    listStyle: "none",
-    display: "flex",
-  },
-  textArea: {
-    marginRight: 10,
-    marginLeft: 10,
-  },
-  button: {
-    backgroundColor: "white",
-    border: "none",
   },
 };
