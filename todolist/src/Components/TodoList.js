@@ -14,6 +14,7 @@ const TodoList = () => {
     const newStorage = [...valueStorage];
     newStorage.push(inputValue);
     setValueStorage(newStorage);
+    setInputValue("");
   };
   const valueDelete = (i) => {
     const newStorage = [...valueStorage];
@@ -29,17 +30,20 @@ const TodoList = () => {
           valueRegister={valueRegister}
           FaPlus={FaPlus}
           Button={Button}
+          inputValue={inputValue}
         />
       </div>
       <div className="ValuesArea" style={styles.valuesArea}>
         {valueStorage.map((value, i) => (
-          <Value
-            value={value}
-            key={i}
-            valueDelete={valueDelete}
-            FaRegTrashAlt={FaRegTrashAlt}
-            Button={Button}
-          />
+          <div key={i}>
+            <Value
+              value={value}
+              valueKey={i}
+              valueDelete={valueDelete}
+              FaRegTrashAlt={FaRegTrashAlt}
+              Button={Button}
+            />
+          </div>
         ))}
       </div>
     </div>

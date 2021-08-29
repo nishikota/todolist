@@ -1,7 +1,7 @@
-const Button = ({clickEvent, button, FaRegTrashAlt, FaPlus, which, i}) => {
+const Button = ({clickEvent, button, which, i}) => {
   return (
     <button onClick={() => clickEvent(i)} style={button}>
-      {which === "resister" ? <FaPlus /> : <FaRegTrashAlt />}
+      {which}
     </button>
   );
 };

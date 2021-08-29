@@ -1,16 +1,22 @@
-const Resister = ({wordInputEvent, valueRegister, FaPlus, Button}) => {
+const Resister = ({
+  wordInputEvent,
+  valueRegister,
+  FaPlus,
+  Button,
+  inputValue,
+}) => {
   return (
     <>
       <input
         placeholder="テキストを入力..."
         type="text"
         onChange={wordInputEvent}
+        value={inputValue}
       />
       <Button
-        FaPlus={FaPlus}
+        which={<FaPlus />}
         clickEvent={valueRegister}
         button={styles.button}
-        which={"resister"}
       />
     </>
   );
