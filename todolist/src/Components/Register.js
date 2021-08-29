@@ -8,7 +8,7 @@ const Resister = ({
   return (
     <>
       <input
-        placeholder="テキストを入力..."
+        placeholder="テキスト入力..."
         type="text"
         onChange={wordInputEvent}
         value={inputValue}
